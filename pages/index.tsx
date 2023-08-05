@@ -1,118 +1,196 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+/* eslint-disable @next/next/no-img-element */
+import React from "react";
+import { NextSeo } from "next-seo";
+import MainTitle from "../components/MainTitle";
+import SubTitle from "../components/SubTitle";
+import SectionBox from "../components/SectionBox";
+import CarouselDots from "../components/CarouselDots";
+import { useWindowSize } from "usehooks-ts";
+import classNames from "classnames";
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
-  return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+interface Data {
+  prefix: string;
+  title: string;
+  mode?: "dark" | "light";
+  content: string;
+  rootClasses?: string;
 }
+
+const atlhetsData: Data[] = [
+  {
+    prefix: "01",
+    title: "CONNECTION",
+    content:
+      "Connect with coaches directly, you can ping coaches to view profile.",
+  },
+  {
+    prefix: "02",
+    title: "COLLABORATION",
+    content:
+      "Work with other student athletes to increase visability. When you share and like other players videos it will increase your visability as a player. This is the team work aspect to Surface 1.",
+    rootClasses: "bg-purple-50",
+  },
+  {
+    prefix: "03",
+    title: "GROWTH",
+    mode: "light",
+    content:
+      "Resources and tools for you to get better as a student Athelte. Access to training classes, tutor sessions, etc",
+    rootClasses: "bg-purple-800 text-white",
+  },
+];
+
+const playersData: Data[] = [
+  {
+    prefix: "01",
+    title: "CONNECTION",
+    content:
+      "Connect with talented athlete directly, you can watch their skills through video showreels directly from Surface 1.",
+  },
+  {
+    prefix: "02",
+    title: "COLLABORATION",
+    rootClasses: "bg-gray-50",
+    content:
+      "Work with recruiter to increase your chances of finding talented athlete.",
+  },
+  {
+    prefix: "03",
+    title: "GROWTH",
+    mode: "light",
+    rootClasses: "bg-blue-950 text-white",
+    content: "Save your time, recruit proper athlets for your team.",
+  },
+];
+
+const Home = () => {
+  const [isMobile, setIsMobile] = React.useState<boolean>(true);
+  const [atlhetsActive, setAtlhetsActive] = React.useState<number>(0);
+  const [playerActive, setPlayerActive] = React.useState<number>(0);
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    setIsMobile(size.width < 767);
+  }, [size]);
+
+  const handleChangePage = (index: number) => {
+    setAtlhetsActive(index);
+  };
+
+  const handleChangePage2 = (index: number) => {
+    setPlayerActive(index);
+  };
+
+  return (
+    <>
+      <NextSeo
+        title="TPIT - Prapan R. Test Assignment"
+        description="Test Assignment - TPIT - Software Engineer (Web Frontend) - Prapan R."
+      />
+
+      <div className="overflow-hidden">
+        <section className="relative pt-4 mt-8">
+          <div className="container mx-auto">
+            <div className="flex justify-end">
+              <div className="w-full md:w-2/3 xl:w-1/2">
+                <MainTitle title="ATHLETS" />
+              </div>
+            </div>
+          </div>
+
+          <div className="container relative z-10 mx-auto h-96 md:h-auto">
+            <div className="flex">
+              <div className="relative w-full xl:w-1/2">
+                <div className="relative top-0 left-0 p-10 translate-x-0 md:p-0 md:absolute md:-top-10 md:-translate-x-1/2 xl:translate-x-0">
+                  <img
+                    src="/footballer.svg"
+                    alt="Footballer"
+                    className="max-w-xs md:max-w-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={classNames([isMobile ? "mobile-view" : ""])}>
+            {atlhetsData.map((data, index) => (
+              <SectionBox
+                key={index}
+                title={
+                  <SubTitle
+                    prefix={data.prefix}
+                    title={data.title}
+                    mode={data.mode || "dark"}
+                  />
+                }
+                justify="end"
+                show={atlhetsActive === index}
+                rootClasses={data.rootClasses || ""}
+                isMobile={isMobile}
+              >
+                {data.content}
+              </SectionBox>
+            ))}
+
+            <CarouselDots
+              onChangePage={handleChangePage}
+              activeIndex={atlhetsActive}
+            />
+          </div>
+        </section>
+
+        <section className="relative z-10 mx-auto mt-16">
+          <div className="container mx-auto">
+            <div className="flex justify-start">
+              <div className="w-1/2">
+                <MainTitle title="PLAYERS" classes="xl:pl-40" />
+              </div>
+            </div>
+          </div>
+
+          <div className="container relative z-10 mx-auto h-52 md:h-auto">
+            <div className="flex">
+              <div className="relative w-full">
+                <div className="relative top-0 right-0 p-10 text-right translate-x-0 md:p-0 xl:pl-96 md:absolute md:-top-48 md:translate-x-1/2 xl:translate-x-0">
+                  <img
+                    src="/basketball.svg"
+                    alt="Footballer"
+                    className="max-w-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={classNames([isMobile ? "mobile-view" : ""])}>
+            {playersData.map((data, index) => (
+              <SectionBox
+                key={index}
+                title={
+                  <SubTitle
+                    prefix={data.prefix}
+                    title={data.title}
+                    mode={data.mode || "dark"}
+                  />
+                }
+                justify="start"
+                show={playerActive === index}
+                rootClasses={data.rootClasses || ""}
+                isMobile={isMobile}
+              >
+                {data.content}
+              </SectionBox>
+            ))}
+
+            <CarouselDots
+              onChangePage={handleChangePage2}
+              activeIndex={playerActive}
+            />
+          </div>
+        </section>
+      </div>
+    </>
+  );
+};
+
+export default Home;
